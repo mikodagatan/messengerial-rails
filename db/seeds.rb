@@ -25,7 +25,8 @@
   2.times do
     client.contact_persons.build(
       first_name: Faker::Name.unique.first_name,
-      last_name: Faker::Name.unique.last_name
+      last_name: Faker::Name.unique.last_name,
+      contact_number: Faker::PhoneNumber.unique.phone_number
     ).save!
 
   end

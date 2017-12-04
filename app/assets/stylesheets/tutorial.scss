@@ -34,6 +34,8 @@
  $LIGHT_GREEN: #65f7a3;
  $MINT_GREEN: #33e6b1;
  $DARK_BLUE: #0F1825;
+ $LAVENDER: #e9ebee;
+ $INDIAN_RED: #e7625f;
 
  $FOOTER_COLOR: $DARK_BLUE;
 
@@ -131,6 +133,10 @@ BASE - SCSS
              font-size: 2.2em;
              text-align: center;
            }
+           h2 {
+             color: white;
+             font-size: 1.2em;
+           }
          }
        }
 
@@ -172,9 +178,29 @@ BASE - SCSS
            letter-spacing: 0.15em;
 
          }
+         .login-button {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background-color: $LAVENDER;
+           cursor: pointer;
+           height: 40px;
+           width: 150px;
+           border-radius: 20px;
+           font-size: 11px;
+           color: black;
+           letter-spacing: 0.15em;
+
+         }
+
 
          .dashboard-button:hover {
            background-color: mediumaquamarine;
+           text-decoration: none;
+         }
+         .login-button:hover {
+           background-color: lightgrey;
+           text-decoration: none;
          }
 
          .dashboard-button:active {

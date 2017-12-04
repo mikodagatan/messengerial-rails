@@ -4,6 +4,30 @@
 
 // Landing Pages
 
-.landing-page-container {
+.options-container {
+  background-color: $LAVENDER;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  min-width: 100%;
+}
 
+.option-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: white;
+  letter-spacing: 0.15em;
+  background-color: $MINT_GREEN;
+}
+
+.option-button:hover {
+  background-color: $MINT_GREEN !important;
+  border: 0;
+  color: white;
+  text-decoration: none;
 }

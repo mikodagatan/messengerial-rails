@@ -1,0 +1,23 @@
+.navbar-toggler {
+  margin-top: 5px;
+}
+
+.navbar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $LAVENDER;
+  cursor: pointer;
+  height: 40px;
+  width: 110px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: black;
+  letter-spacing: 0.15em;
+}
+
+.navbar-button:hover {
+  background-color: $INDIAN_RED;
+  text-decoration: none;
+  color: white;
+}

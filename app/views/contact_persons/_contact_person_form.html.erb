@@ -1,0 +1,6 @@
+<%= simple_form_for @contact_person, url: url, method: method do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :contact_number %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

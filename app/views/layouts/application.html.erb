@@ -10,6 +10,8 @@
 
   <body>
     <%= render 'layouts/navbar' if user_signed_in? %>
-    <%= yield %>
+    <%= render 'layouts/form_layout' if in_form? %>
+    <%= render 'layouts/show_layout' if in_show? %>
+    <%= yield if controller_name == 'pages'%>
   </body>
 </html>

@@ -1,0 +1,3 @@
+<h3>New Address</h3>
+<h5><%= @client.name %></h5>
+<%= render 'address_form', url: client_addresses_url(@client), method: :post %>

@@ -1,0 +1,3 @@
+<h3>New Contact Person</h3>
+<h5>For <%= @client.name %></h5>
+<%= render 'contact_person_form', url: client_contact_persons_url(@client.id), method: :post %>

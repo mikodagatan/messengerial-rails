@@ -1,0 +1,9 @@
+<%= simple_form_for @address, url: url, method: method do |f| %>
+  <%= f.input :first_line %>
+  <%= f.input :second_line %>
+  <%= f.input :city_town %>
+  <%= f.input :province %>
+  <%= f.input :country%>
+  <%= f.input :zipcode %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
