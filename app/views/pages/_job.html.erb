@@ -1,0 +1,45 @@
+<div class="job-container">
+  <div class="col-12 v-padding job-first" id="job_first_<%= @jobs.index(job)%>">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <p><strong>Requestor:</strong> <%= job.user.full_name %></p>
+        <p><strong>Required Date:</strong> <%= better_date(job.required_date) %></p>
+        <p><strong>Resource: </strong><%= job.resource.full_name %></p>
+      </div>
+      <div class="col-12 col-md-3">
+        <p><strong>Client:</strong> <%= link_to job.client.name, client_url(job.client) %></p>
+        <p><strong>Contact Person:</strong> <%= job.contact_person.full_name %></p>
+        <p><strong>Contact No.:</strong> <%= job.contact_person.contact_number %></p>
+      </div>
+      <div class="col-12 col-md-3">
+        <p><strong>Status: </strong></p>
+        <div class="medium-index bg-<%= status(job.status.name) %>"><%= job.status.name.upcase %></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 small-font job-second d-none" id="job_second_<%= @jobs.index(job) %>">
+      <div class="space"></div>
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <div class="job-second-option">
+          <p><strong>Address: </strong><%= job.address.complete %></p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="job-second-option">
+          <p><strong>Request Description: </strong> <br> <%= job.request_description %></p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="job-second-option">
+          <p><strong>Notes to Resource: </strong> <br> <%= job.notes_to_resource %></p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="job-second-option">
+          <p><strong>Resource Notes: </strong> <br> <%= job.resource_notes%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

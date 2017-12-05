@@ -43,12 +43,13 @@ ActiveRecord::Schema.define(version: 20171128103053) do
     t.date "required_date"
     t.integer "client_id"
     t.integer "user_id"
+    t.integer "address_id"
     t.text "request_description"
     t.integer "contact_person_id"
-    t.text "notes_to_messenger"
+    t.text "notes_to_resource"
     t.integer "resource_id"
     t.integer "status_id"
-    t.text "messenger_notes"
+    t.text "resource_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

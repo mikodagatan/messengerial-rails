@@ -13,4 +13,13 @@ Rails.application.routes.draw do
     resources :contact_persons
     resources :addresses
   end
+
+  get 'selections/change_contact_person'
+  get 'selections/change_address'
+
+  resources :jobs
+
+  # selections
+
+
 end
