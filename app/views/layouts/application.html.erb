@@ -3,15 +3,17 @@
   <head>
     <title>Tracker</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/navbar' if user_signed_in? %>
+    <%# render 'layouts/flash' %>
     <%= render 'layouts/form_layout' if in_form? %>
     <%= render 'layouts/show_layout' if in_show? %>
-    <%= yield if controller_name == 'pages'%>
+    <%= yield if controller_name == 'pages' && !in_show? %>
+
+
   </body>
 </html>

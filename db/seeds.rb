@@ -25,7 +25,8 @@
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
     password: "123123",
-    email: Faker::Internet.email
+    email: Faker::Internet.email,
+    contact_number: Faker::PhoneNumber.unique.phone_number
   )
   user.save
 
@@ -47,10 +48,17 @@
       notes_to_resource: Faker::StarWars.quote,
       resource_id: user.id,
       status_id: 1,
+      request_type_id: 1,
       resource_notes: Faker::Seinfeld.quote
     ).save!
   end
 
-
+  user = User.new(
+    first_name: 'Miko',
+    last_name: 'Dagatan',
+    password: "123123",
+    email: '1@miko.com',
+    contact_number: '09176224604'
+  ).save
 
 end

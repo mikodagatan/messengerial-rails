@@ -36,6 +36,12 @@ module ApplicationHelper
     number_with_precision(number, :precision => 2, :delimiter => ',')
   end
 
+  def has_tasks?(job)
+    if job.where.not(status_id: 4).blank?
+      'No tasks for now'
+    end
+  end
+
   def status(status)
     case status
     when "Open"

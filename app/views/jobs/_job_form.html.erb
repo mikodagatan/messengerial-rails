@@ -2,6 +2,7 @@
   <%= f.input :required_date %>
   <%= f.input :client_id, collection: @clients, label_method: :name, value_method: :id %>
   <%= f.input :address_id, collection: @addresses, label_method: :complete, value_method: :id %>
+  <%= f.input :request_type_id, collection: @request_types, label_method: :name, value_method: :id %>
   <%= f.input :request_description %>
   <%= f.input :contact_person_id, collection: @contact_persons, label_method: :full_name, value_method: :id  %>
   <%= f.input :resource_id, collection: @resources, label_method: :full_name, value_method: :id %>

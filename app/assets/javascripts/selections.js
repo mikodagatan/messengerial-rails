@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 
   $('#job_client_id').change(function() {
     $.ajax({

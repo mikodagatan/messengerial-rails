@@ -6,19 +6,12 @@
         <%= link_to 'Home', root_url, class:'nav-link' %>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <%= link_to 'My Tasks', your_tasks_url, class: 'nav-link'%>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
         <%= link_to 'SIGN OUT', destroy_user_session_path, class: 'navbar-button' %>
-        </ul>
       </li>
     </ul>
   </div>

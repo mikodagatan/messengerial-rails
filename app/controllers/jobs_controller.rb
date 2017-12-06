@@ -6,24 +6,25 @@ class JobsController < ApplicationController
     @addresses = Array.wrap(nil)
     @resources = User.all
     @statuses = Status.all
+    @request_types = RequestType.all
   end
 
   def create
     @job = Job.new(job_params)
-    @job.status_id = Status.find_by(name: "Open")
-    @job.user_id = current_user
+    @job.status_id = Status.find_by(name: "Open").id
+    @job.user_id = current_user.id
     if @job.save
       flash[:success] = "job saved"
       redirect_to root_url
     else
-      flash[:danger] = "submission not saved"
+      flash[:danger] = @job.errors.full_messages
       render action: :new
     end
   end
 
   def show
     @job = Job.find(params[:id])
-  end
+end
 
   private
 
@@ -32,8 +33,9 @@ class JobsController < ApplicationController
       :id,
       :required_date,
       :client_id,
+      :request_type_id,
       :user_id,
-      :address,
+      :address_id,
       :request_description,
       :contact_person_id,
       :notes_to_resource,

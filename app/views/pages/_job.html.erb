@@ -1,19 +1,33 @@
-<div class="job-container">
+<div class="job-container small-font">
   <div class="col-12 v-padding job-first" id="job_first_<%= @jobs.index(job)%>">
     <div class="row">
-      <div class="col-12 col-md-3">
-        <p><strong>Requestor:</strong> <%= job.user.full_name %></p>
+      <div class="col-12 col-md-12">
         <p><strong>Required Date:</strong> <%= better_date(job.required_date) %></p>
-        <p><strong>Resource: </strong><%= job.resource.full_name %></p>
+        <hr>
+      </div>
+      <div class="col-12 col-md-3">
+
+        <p><strong>Requestor:</strong></p>
+        <p><%= job.user.full_name %></p>
+        <p><%= job.user.contact_number %></p>
       </div>
       <div class="col-12 col-md-3">
         <p><strong>Client:</strong> <%= link_to job.client.name, client_url(job.client) %></p>
-        <p><strong>Contact Person:</strong> <%= job.contact_person.full_name %></p>
-        <p><strong>Contact No.:</strong> <%= job.contact_person.contact_number %></p>
+        <p><strong>Contact:</strong></p>
+        <p><%= job.contact_person.full_name %></p>
+        <p><%= job.contact_person.contact_number %></p>
       </div>
       <div class="col-12 col-md-3">
-        <p><strong>Status: </strong></p>
-        <div class="medium-index bg-<%= status(job.status.name) %>"><%= job.status.name.upcase %></div>
+        <p><strong>Resource: </strong></p>
+        <p><%= job.resource.full_name %></p>
+        <p><%= job.resource.contact_number %></p>
+      </div>
+      <div class="col-12 col-md-3 text-center">
+        <p><strong>Status:</strong></p>
+        <div class="d-flex flex-row justify-content-center">
+
+          <div class="medium-index bg-<%= status(job.status.name) %>"><%= job.status.name.upcase %></div>
+        </div>
       </div>
     </div>
   </div>

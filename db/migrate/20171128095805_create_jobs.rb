@@ -10,6 +10,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :notes_to_resource
       t.integer :resource_id
       t.integer :status_id
+      t.integer :request_type_id
       t.text :resource_notes
 
       t.timestamps

@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   	get '/users/sign_out' => 'devise/sessions#destroy'
 	end
 
-  authenticated do
-    root :to => 'pages#welcome_page', as: :authenticated
+  authenticated :user do
+    root :to => 'pages#welcome_page', as: :authenticated_root
   end
-  root 'pages#landing_page'
+  root to: 'pages#landing_page'
 
   resources :clients do
     resources :contact_persons
@@ -16,8 +16,10 @@ Rails.application.routes.draw do
 
   get 'selections/change_contact_person'
   get 'selections/change_address'
+  get 'your_tasks' => 'pages#your_jobs'
 
   resources :jobs
+
 
   # selections
 

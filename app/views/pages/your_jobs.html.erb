@@ -1,7 +1,9 @@
-<div class="col-lg-10 col-md-9">
+<div class="col-lg-12 col-md-12">
   <div class="row h-padding v-padding large">
     <div class="col-12">
-      <h3>Offshore's Tasks</h3>
+      <h3>My Tasks</h3>
+      <p><%= has_tasks?(@jobs) %></p>
+
     </div>
   </div>
   <%= render partial: 'job', collection: @jobs, as: 'job' %>
