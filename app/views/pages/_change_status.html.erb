@@ -1,0 +1,13 @@
+
+  <div class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink-<%= job.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Change Status
+  </div>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink-<%= job.id %>">
+    <%= simple_form_for job, url: job_url(job), method: :patch do |f| %>
+      <%= f.hidden_field :required_date, value: job.required_date %>
+      <%= f.submit 'Scheduled', name: 'Scheduled', class: 'dropdown-item' %>
+      <%= f.submit 'Completed', name: 'Completed', class: 'dropdown-item' %>
+      <%= f.submit 'With Issues', name: 'With_Issues', class: 'dropdown-item' %>
+    <% end %>
+  </div>

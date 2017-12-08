@@ -1,8 +1,31 @@
+
 <div class="col-lg-10 col-md-9">
   <div class="row h-padding v-padding large">
     <div class="col-12">
-      <h3>Offshore's Tasks</h3>
+      <div class="row">
+        <div class="col-6 col-md-8">
+          <h3>Offshore's Tasks</h3>
+          <div class="space"></div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="d-flex justify-content-end">
+            <div class="p-2">
+              <%= render 'sort_bar' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <%= render 'nav_tabs' %>
+
+    <%= render partial: 'job', collection: @jobs, as: 'job' %>
+  </div>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 text-center">
+      <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
+      <%= page_entries_info @jobs %>
     </div>
   </div>
-  <%= render partial: 'job', collection: @jobs, as: 'job' %>
 </div>

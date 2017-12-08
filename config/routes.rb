@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   get 'selections/change_contact_person'
   get 'selections/change_address'
   get 'your_tasks' => 'pages#your_jobs'
+  get 'your_requests' => 'pages#your_requests'
 
-  resources :jobs
+  resources :jobs do
+    get  'resource_notes' => "jobs#resource_notes"
+  end
 
 
   # selections

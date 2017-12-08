@@ -117,7 +117,7 @@ body {
 }
 
 .space {
-  height: 1rem;
+  min-height: 1rem;
 }
 
 .text_field {
@@ -136,6 +136,10 @@ body {
   font-family: 'Proxima Nova Light';
 }
 
+.white-font {
+  color: white;
+}
+
 strong {
   font-family: 'Quicksand Reg';
   font-weight: bold;
@@ -147,4 +151,8 @@ a:hover {
 
 .horizontal-max {
   min-width: 100%
+}
+
+.select-width {
+  width: 70% !important;
 }

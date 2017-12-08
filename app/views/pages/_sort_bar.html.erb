@@ -1,0 +1,20 @@
+
+<%# form_tag(root_path, method: :get, class: 'form-inline') do %>
+  <%# collection_select :sort, :sort, @sort_values, :value, :key, {include_blank: 'Sort Here'}, {class: 'form-control select optional select-width'} %>
+  <%# hidden_field_tag :status, params[:status] %>
+  <%# submit_tag 'Sort', class: 'btn btn-primary' %>
+<%# end %>
+
+<div class="dropdown show">
+  <div class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By
+  </div>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+    <%= link_to "Required Date Latest", authenticated_root_url(status: params[:status], sort: {sort: "required_date DESC"}), class: "dropdown-item" %>
+    <%= link_to "Request Date Latest", authenticated_root_url(status: params[:status], sort: {sort: "created_at DESC"}), class: "dropdown-item" %>
+    <%= link_to "Required Date Oldest", authenticated_root_url(status: params[:status], sort: {sort: "required_date ASC"}), class: "dropdown-item" %>
+    <%= link_to "Request Date Oldest", authenticated_root_url(status: params[:status], sort: {sort: "created_at ASC"}), class: "dropdown-item" %>
+
+  </div>
+</div>

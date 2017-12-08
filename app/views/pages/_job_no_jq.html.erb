@@ -1,6 +1,6 @@
 <div class="col-12">
   <div class="job-container small-font">
-    <div class="col-12 v-padding job-first" id="job_first_<%= @jobs.index(job)%>">
+    <div class="col-12 v-padding" id="job_first_<%= @jobs.index(job)%>">
       <div class="row">
         <div class="col-12 col-md-12">
           <div class="row">
@@ -18,7 +18,6 @@
           <p><strong>Requestor:</strong></p>
           <p><%= job.user.full_name %></p>
           <p><%= job.user.contact_number %></p>
-
         </div>
         <div class="col-12 col-md-3">
           <p><strong>Client:</strong> <%= link_to job.client.name, client_url(job.client) %></p>
@@ -40,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 small-font job-second d-none" id="job_second_<%= @jobs.index(job) %>">
+    <div class="col-12 small-font " id="job_second_<%= @jobs.index(job) %>">
         <div class="space"></div>
       <div class="row">
         <div class="col-12 col-md-12">
@@ -66,19 +65,10 @@
       </div>
     </div>
     <div class="col-12">
-      <hr>
-      <div class="d-flex justify-content-between">
-        <%# if action_name == 'your_jobs' %>
-          <div class="p-2">
-            <%= link_to "Edit", edit_job_url(job), class:'btn btn-primary btn-sm white-font' if current_user == job.user %>
-            <%= link_to "Add / Edit Resource Notes", job_resource_notes_url(job), class:'btn btn-primary btn-sm white-font' if current_user == job.resource %>
-            <%= render 'change_status', job: job if current_user == job.user %>
-          </div>
-        <%# end %>
-        <div class="p-2">
-          <p><strong>Date Requested: </strong><%= better_date2(job.created_at) %></p>
-        </div>
-      </div>
+      <% if action_name == 'your_jobs' %>
+        <%= link_to "Edit", edit_job_url(job), class:'btn btn-primary btn-sm white-font' if current_user == job.user %>
+        <%= link_to "Add Resource Notes", edit_job_url(job, add_notes_only: true), class:'btn btn-primary btn-sm white-font' if current_user == job.resource %>
+      <% end %>
     </div>
   </div>
 </div>

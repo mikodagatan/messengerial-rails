@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "All", authenticated_root_url(status: "All", sort: {sort: sort2}), class: "nav-link #{ "active" if params[:status] == 'All'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Open", authenticated_root_url(status: "Open", sort: {sort: sort2}), class: "nav-link #{ "active" if params[:status] == 'Open'}"  %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Scheduled", authenticated_root_url(status: "Scheduled", sort: {sort: sort2}), class: "nav-link #{ "active" if params[:status] == 'Scheduled'}"  %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "With Issues", authenticated_root_url(status: "With Issues", sort: {sort: sort2}), class: "nav-link #{ "active" if params[:status] == 'With Issues'}" %>
+  </li>
+</ul>

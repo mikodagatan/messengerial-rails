@@ -15,8 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def in_show?
-    params[:action] == 'show'
-    # params[:action] == 'your_jobs'
+    params[:controller] != 'pages' &&
+    (params[:action] != 'new' &&
+    params[:action] != 'edit')
   end
 
   def unlogged_redirect
@@ -25,6 +26,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
 
 
   protected

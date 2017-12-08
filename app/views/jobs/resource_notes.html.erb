@@ -1,0 +1,5 @@
+<h3>Add / Edit Resource Notes</h3>
+<div class="space"></div>
+<%= render 'job_resource_notes_form', url: job_url(@job), method: :patch %>
+<div class="space"></div>
+<%= render partial: 'pages/job_no_jq', collection: @jobs, as: 'job' %>
