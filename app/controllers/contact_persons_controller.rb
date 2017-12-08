@@ -9,10 +9,10 @@ class ContactPersonsController < ApplicationController
     @contact_person = ContactPerson.new(contact_person_params)
     @contact_person.client_id = @client.id
     if @contact_person.save
-      flash[:success] = "Contact_person saved"
+      flash.now[:success] = "Contact_person saved"
       redirect_to root_url
     else
-      flash[:danger] = "submission not saved"
+      flash.now[:danger] = "submission not saved"
       render action: :new
     end
   end

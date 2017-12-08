@@ -7,10 +7,10 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      flash[:success] = "client saved"
+      flash.now[:success] = "Client created"
       redirect_to root_url
     else
-      flash[:danger] = "submission not saved"
+      flash.now[:danger] = @client.errors.full_messages
       render action: :new
     end
   end

@@ -8,7 +8,7 @@ module DeviseHelper
       resource: resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="callout warning small-font-size">
+    <div class="alert alert-warning small-font">
       #{sentence}
       #{messages}
     </div>

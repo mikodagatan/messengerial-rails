@@ -16,8 +16,13 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <%= link_to 'Notifications', notifications_index_url, class: 'navbar-button bg-primary' %>
+      <li class='navbar-text'>
+        <div href="#" class: 'nav-link text-white'>
+          <%= current_user.full_name %>
+        </a>
+      </li>
+      <li class='nav-item'>
+        <%= link_to 'NOTIFICATIONS', notifications_index_url, class: 'navbar-button bg-primary text-white' %>
       </li>
       <li>
         <%= link_to 'SIGN OUT', destroy_user_session_path, class: 'navbar-button' %>

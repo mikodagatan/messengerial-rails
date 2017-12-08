@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to root_url
       notif_welcome(@user)
     else
-      flash[:danger] = "User not saved"
+      flash.now[:danger] = "User not saved"
       redirect_to root_url
     end
 

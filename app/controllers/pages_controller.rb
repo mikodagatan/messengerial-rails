@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   helper_method :sort_direction, :sort2
 
   def landing_page

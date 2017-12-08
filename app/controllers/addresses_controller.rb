@@ -9,10 +9,10 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.client_id = @client.id
     if @address.save
-      flash[:success] = 'Address Saved'
+      flash.now[:success] = 'Address Saved'
       redirect_to client_url(@client)
     else
-      flash[:danger] = 'Address not saved'
+      flash.now[:danger] = 'Address not saved'
       render action: :new
     end
   end

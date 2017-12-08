@@ -16,11 +16,11 @@ class JobsController < ApplicationController
     @job.status_id = Status.find_by(name: "Open").id
     @job.user_id = current_user.id
     if @job.save
-      flash[:success] = "job saved"
+      flash.now[:success] = "Task created"
       redirect_to root_url
       notif_new_task(@job)
     else
-      flash[:danger] = @job.errors.full_messages
+      flash.now[:danger] = @job.errors.full_messages
       render action: :new
     end
   end
@@ -53,11 +53,11 @@ class JobsController < ApplicationController
       redirect_to root_url
       notif_resource_notes(@job)
     elsif @job.update_attributes(job_params)
-      flash[:success] = "Job Edited"
+      flash.now[:success] = "Job Edited"
       redirect_to root_url
       notif_edit_task(@job)
     else
-      flash[:danger] = "Job cannot be edited"
+      flash.now[:danger] = "Job cannot be edited"
       render action: :new
     end
   end
