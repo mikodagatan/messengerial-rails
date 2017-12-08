@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'notifications/index'
 
   # selections
+  mount ActionCable.server => '/cable'
 
 
 end

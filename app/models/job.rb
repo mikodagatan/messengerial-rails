@@ -1,4 +1,6 @@
 class Job < ApplicationRecord
+  after_create_commit { NotificationBroadcastJob.perform_later self }
+
   belongs_to :client
   belongs_to :user, required: false
   belongs_to :status, required: false
