@@ -17,6 +17,9 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
+        <%= link_to 'Notifications', notifications_index_url, class: 'navbar-button bg-primary' %>
+      </li>
+      <li>
         <%= link_to 'SIGN OUT', destroy_user_session_path, class: 'navbar-button' %>
       </li>
     </ul>

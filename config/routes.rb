@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get  'resource_notes' => "jobs#resource_notes"
   end
 
+  get 'notifications/link_through'
+  get 'notifications/index'
 
   # selections
 

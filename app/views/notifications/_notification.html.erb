@@ -1,0 +1,39 @@
+<% if notification.notification_type != 'notif_welcome' %>
+  <%= link_to your_tasks_url + "#job_first_#{notification.job.id}" do %>
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-primary">
+          <div class="d-flex justify-content-between">
+            <div class="p-2">
+              <%= render partial:'notif_change_status_completed', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_change_status_completed'%>
+              <%= render partial:'notif_change_status_with_issues', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_change_status_with_issues'%>
+              <%= render partial:'notif_change_status_scheduled', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_change_status_scheduled'%>
+              <%= render partial:'notif_new_task', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_new_task'%>
+              <%= render partial:'notif_edit_task', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_edit_task'%>
+              <%= render partial:'notif_resource_notes', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_resource_notes'%>
+              <%= render partial:'notif_welcome', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_welcome'%>
+            </div>
+            <div class="p-2 small-font">
+              <%= better_datetime(Time.zone.now) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-primary">
+        <div class="d-flex justify-content-between">
+          <div class="p-2">
+            <%= render partial:'notif_welcome', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_welcome'%>
+          </div>
+          <div class="p-2 small-font">
+            <%= better_datetime(Time.zone.now) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

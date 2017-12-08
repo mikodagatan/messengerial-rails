@@ -3,14 +3,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+     super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "User saved"
+      redirect_to root_url
+      notif_welcome(@user)
+    else
+      flash[:danger] = "User not saved"
+      redirect_to root_url
+    end
+
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -57,4 +66,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def user_params
+  params.require(:user).permit(
+    :first_name,
+            :last_name,
+            :contact_number,
+            :email,
+            :password,
+            :password_confirmation,
+            :current_password
+  )
+  end
+
+  def notif_welcome(user)
+    User.all.each do |u|
+      Notification.create(
+        sender_id: user.id,
+        recipient_id: u.id,
+        notification_type: 'notif_welcome'
+      )
+    end
+  end
+
 end

@@ -1,0 +1,12 @@
+class CreateNotifications < ActiveRecord::Migration[5.1]
+  def change
+    create_table :notifications do |t|
+      t.integer :sender_id
+      t.integer :recipient_id
+      t.integer :job_id
+      t.string  :notification_type
+      t.datetime :read
+      t.references
+    end
+  end
+end
