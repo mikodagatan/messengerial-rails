@@ -1,0 +1,8 @@
+<%= render 'layouts/reports_bar' %>
+<div class="container report">
+  <div class="row form">
+    <div class="col-12 col-sm-12 md-8">
+      <%= yield if in_report? %>
+    </div>
+  </div>
+</div>

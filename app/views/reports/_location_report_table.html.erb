@@ -1,0 +1,15 @@
+<table class="table report table-hover" style='min-width: 100%;'>
+	<thead class="thead-light">
+		<tr>
+			<th>City/Town</th>
+      <th class='text-center'># of Jobs</th>
+      <th class='text-center'># Completed</th>
+      <th class='text-center'># With Issues</th>
+      <th class='text-center'># Scheduled</th>
+      <th class='text-center'># Open</th>
+		</tr>
+	</thead>
+	<tbody class="table-hover">
+    <%= render partial: 'location', collection: @locations, as: 'location' %>
+	</tbody>
+</table>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :unlogged_redirect
 
-  helper_method :in_form?, :in_show?
+  helper_method :in_form?, :in_show?, :in_report?
 
   def in_form?
     controller_name == 'registrations' ||
@@ -16,8 +16,13 @@ class ApplicationController < ActionController::Base
 
   def in_show?
     params[:controller] != 'pages' &&
+    params[:controller] != 'reports' &&
     (params[:action] != 'new' &&
     params[:action] != 'edit')
+  end
+
+  def in_report?
+    controller_name == 'reports'
   end
 
   def unlogged_redirect
@@ -26,7 +31,6 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
-
 
 
   protected

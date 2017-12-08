@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'your_tasks' => 'pages#your_jobs'
   get 'your_requests' => 'pages#your_requests'
 
+  get 'location_report' => 'reports#location_report'
+
   resources :jobs do
     get  'resource_notes' => "jobs#resource_notes"
   end

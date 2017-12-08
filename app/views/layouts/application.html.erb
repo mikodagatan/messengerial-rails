@@ -12,6 +12,7 @@
     <%# render 'layouts/flash' %>
     <%= render 'layouts/form_layout' if in_form? %>
     <%= render 'layouts/show_layout' if in_show? %>
+    <%= render 'layouts/report_layout' if in_report? %>
     <%= yield if controller_name == 'pages' && !in_show? %>
 
 

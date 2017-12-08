@@ -5,4 +5,5 @@ class Address < ApplicationRecord
   def complete
     "#{first_line}, #{second_line} #{city_town}, #{province}, #{country} #{zipcode}"
   end
+ 
 end
