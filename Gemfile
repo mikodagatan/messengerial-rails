@@ -51,3 +51,4 @@ gem 'redis', '3.0'
 gem "pdfkit"
 gem 'unicorn'
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+gem 'wkhtmltopdf-binary'
