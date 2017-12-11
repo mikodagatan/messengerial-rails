@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'selections/change_address'
   get 'your_tasks' => 'pages#your_jobs'
   get 'your_requests' => 'pages#your_requests'
+  get 'print_tasks' => 'pages#print_tasks'
 
   get 'location_report' => 'reports#location_report'
 

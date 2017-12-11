@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :unlogged_redirect
 
+  require 'pdfkit'
+
   helper_method :in_form?, :in_show?, :in_report?
 
   def in_form?
@@ -20,6 +22,11 @@ class ApplicationController < ActionController::Base
     params[:controller] != 'reports' &&
     (params[:action] != 'new' &&
     params[:action] != 'edit')
+  end
+
+  def in_print?
+    controller_name == 'pages' &&
+    params[:action] == 'print_tasks'
   end
 
   def in_report?

@@ -48,3 +48,6 @@ gem 'select2-rails'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 gem 'redis', '3.0'
+gem "pdfkit"
+gem 'unicorn'
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
