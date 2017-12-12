@@ -5,7 +5,7 @@
         <div class="col-12 col-md-12">
           <div class="row">
             <div class="col">
-              <p><strong>Required Date:</strong> <%= better_date(job.required_date) %></p>
+              <p><strong>Required Date:</strong> <%= better_date2(job.required_date) %></p>
             </div>
             <div class="col-6 col-md-3">
               <p><strong>Request Type: </strong><%= job.request_type.name %></p>
@@ -15,16 +15,15 @@
         </div>
         <div class="col-12 col-md-3">
 
-          <p><strong>Requestor:</strong></p>
-          <p><%= job.user.full_name %></p>
-          <p><%= job.user.contact_number %></p>
+          <p><strong>Requestor:</strong> <%= job.user.full_name %></p>
+          <p><strong>Number: </strong> <%= job.user.contact_number %></p>
+          <p><strong>Client:</strong> <%= link_to job.client.name, client_url(job.client) %></p>
 
         </div>
         <div class="col-12 col-md-3">
-          <p><strong>Client:</strong> <%= link_to job.client.name, client_url(job.client) %></p>
-          <p><strong>Contact:</strong></p>
-          <p><%= job.contact_person.full_name %></p>
-          <p><%= job.contact_person.contact_number %></p>
+          <p><strong>Target Client: </strong> <%= link_to job.target_client.name, client_target_client_url(job.client, job.target_client) %> </p>
+          <p><strong>Contact:</strong> <%= job.contact_person.full_name %></p>
+          <p><strong>Number: </strong> <%= job.contact_person.contact_number %></p>
         </div>
         <div class="col-12 col-md-3">
           <p><strong>Resource: </strong></p>

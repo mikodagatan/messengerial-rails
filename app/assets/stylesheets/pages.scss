@@ -44,13 +44,10 @@
 }
 
 .job-container-pdf {
-  border-radius: 20px;
   font-size: 10px;
   // border: 0.5px solid grey;
-  margin-bottom: 1rem;
   background-color: white;
-  border: 1px solid black;
-  padding: 1.5rem 1rem 1.5rem 1rem;
+  // padding: 1.5rem 0rem 1.5rem 0rem;
   &p {
     font-family: 'Proxima Nova Light';
     font-size: 10px;
@@ -82,4 +79,8 @@
 
 span.thick {
   font-family: 'Proxima Nova Bold';
+}
+
+hr.pdf {
+  margin-bottom: 10px;
 }

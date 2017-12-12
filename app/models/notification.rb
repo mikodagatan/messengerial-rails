@@ -7,4 +7,6 @@ class Notification < ApplicationRecord
   scope :unread, -> {
     where(read: nil)
   }
+
+  
 end

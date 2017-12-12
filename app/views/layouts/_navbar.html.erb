@@ -22,7 +22,7 @@
         </a>
       </li>
       <li class='nav-item'>
-        <%= link_to 'NOTIFICATIONS', notifications_index_url, class: 'navbar-button bg-primary text-white' %>
+        <%= link_to "#{ number_of_notifications } NOTIFICATIONS", notifications_index_url, class: 'navbar-button bg-primary text-white' %>
       </li>
       <li>
         <%= link_to 'SIGN OUT', destroy_user_session_path, class: 'navbar-button' %>

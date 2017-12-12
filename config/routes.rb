@@ -13,14 +13,17 @@ Rails.application.routes.draw do
     resources :target_clients do
       resources :contact_persons
       resources :addresses
-    end
+  end
   end
 
   get 'selections/change_contact_person'
   get 'selections/change_address'
+  get 'selections/change_target_client'
   get 'your_tasks' => 'pages#your_jobs'
   get 'your_requests' => 'pages#your_requests'
   get 'print_tasks' => 'pages#print_tasks'
+  get 'update_notification_unread' => 'notifications#update_notification_unread'
+  get 'update_notification_unread_all' => 'notifications#update_notification_unread_all'
 
   get 'location_report' => 'reports#location_report'
 

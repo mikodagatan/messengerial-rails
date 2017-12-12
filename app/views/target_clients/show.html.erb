@@ -2,10 +2,10 @@
   <h3><%= @client.name %></h3>
   <div class="options-container">
     <div class="row justify-content-center">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <%= link_to 'ADD ADDRESS', new_client_target_client_address_url(@client, @target_client), class: 'option-button black-text bg-white' %>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <%= link_to 'ADD CONTACT PERSON', new_client_target_client_contact_person_url(@client, @target_client), class: 'option-button black-text bg-white' %>
       </div>
     </div>

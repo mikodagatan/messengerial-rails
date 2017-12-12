@@ -9,6 +9,7 @@ class JobsController < ApplicationController
     @resources = User.all
     @statuses = Status.all
     @request_types = RequestType.all
+    @target_clients = Array.wrap(nil)
   end
 
   def create
@@ -16,12 +17,12 @@ class JobsController < ApplicationController
     @job.status_id = Status.find_by(name: "Open").id
     @job.user_id = current_user.id
     if @job.save
-      flash[:success] = "Task created for resource, #{@job.resource.full_name}, and client, #{@job.client.name}."
+      flash[:success] = "Task created for resource, #{@job.resource.full_name}, and client, #{@job.client.name}, with target client, #{@job.target_client.name}"
       redirect_to root_url
       notif_new_task(@job)
     else
       flash[:danger] = @job.errors.full_messages
-      render action: :new
+      redirect_to new_job_url
     end
   end
 
@@ -82,6 +83,7 @@ end
       :id,
       :required_date,
       :client_id,
+      :target_client_id,
       :request_type_id,
       :user_id,
       :address_id,

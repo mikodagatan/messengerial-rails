@@ -1,3 +1,5 @@
 <h3>Notifications</h3>
+<%= link_to "Read All", update_notification_unread_all_url, class: "btn btn-success text-white" if !@notifications.blank? %>
 <div class="space"></div>
+<%= 'No Notifications' if @notifications.blank? %>
 <%= render partial: 'notification', collection: @notifications, as: 'notification' %>

@@ -1,3 +1,5 @@
-<div class="col-12 selection v-padding">
-  <%= link_to client.name, client_url(client), class: "selection" %>
-</div>
+<%= link_to client_url(client), class: "selection" do %>
+  <div class="col-12 selection v-padding">
+    <%= client.name %>
+  </div>
+<% end %>

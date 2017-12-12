@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   require 'pdfkit'
 
-  helper_method :in_form?, :in_show?, :in_report?, :in_print?
+  helper_method :in_form?, :in_show?, :in_report?, :in_print?, :number_of_notifications
 
   def in_form?
     controller_name == 'registrations' ||
@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     controller_name == 'sessions')
       redirect_to root_url
     end
+  end
+
+  def number_of_notifications
+    Notification.where(recipient_id: current_user, read: nil ).count
   end
 
 
