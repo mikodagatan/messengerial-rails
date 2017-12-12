@@ -1,0 +1,37 @@
+<div class='pb_avoid'>
+  <span class="thick">Task # <%= job.id %></span>
+  <div class="row">
+    <div class="col-12">
+      <div class="job-container-pdf">
+        <div class="row">
+          <div class="col-6">
+            <p><span class="thick">Required Date:</span> <%= better_date(job.required_date) %></p>
+            <p><span class="thick">Request Type: </span><%= job.request_type.name %></p>
+            <p><span class="thick">Status: </span><%= job.status.name.upcase %></p>
+            <p><span class="thick">Requestor: </span><%= job.user.full_name %> (<%= job.user.contact_number %>)</p>
+          </div>
+          <div class="col-6">
+            <p><span class="thick">Client:</span> <%= link_to job.client.name, client_url(job.client) %></p>
+            <p><span class="thick">Client:</span> <%= link_to job.target_client.name, client_target_client_url(job.target_client) %></p>
+            <p><span class="thick">Contact:</span> <%= job.contact_person.full_name %> (<%= job.contact_person.contact_number %>)</p>
+            <p><span class="thick">Resource: </span><%= job.resource.full_name %> (<%= job.resource.contact_number %>)</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p><span class="thick">Address: </span><%= job.address.complete %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p><span class="thick">Request Description: </span> <br> <%= job.request_description %></p>
+            <p><span class="thick">Notes to Resource: </span> <br> <%= job.notes_to_resource %></p>
+            <p><span class="thick">Resource Notes: </span> <br> <%= job.resource_notes%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+</div>

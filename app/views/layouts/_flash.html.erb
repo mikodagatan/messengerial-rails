@@ -1,5 +1,3 @@
-<%# unless no_flash_pages %>
-  <% flash.each do |key, value| %>
-    <%= content_tag :div, value, class: "alert alert-#{key}", role: "alert" %>
-  <% end %>
-<%# end %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "alert alert-#{key}", role: "alert" %>
+<% end %>

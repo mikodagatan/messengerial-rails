@@ -4,7 +4,9 @@ class CreateContactPersons < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :last_name
       t.string :contact_number
-      t.integer :client_id
+      t.integer :target_client_id
+
+      t.timestamps
     end
   end
 end

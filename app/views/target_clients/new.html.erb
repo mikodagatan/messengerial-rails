@@ -1,0 +1,4 @@
+<h3>New Target Client</h3>
+<p>For <%= @client.name %></p>
+<br>
+<%= render 'target_client_form', url: client_target_clients_url(@client, @target_client), method: :post %>

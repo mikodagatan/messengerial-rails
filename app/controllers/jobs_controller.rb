@@ -16,11 +16,11 @@ class JobsController < ApplicationController
     @job.status_id = Status.find_by(name: "Open").id
     @job.user_id = current_user.id
     if @job.save
-      flash.now[:success] = "Task created"
+      flash[:success] = "Task created for resource, #{@job.resource.full_name}, and client, #{@job.client.name}."
       redirect_to root_url
       notif_new_task(@job)
     else
-      flash.now[:danger] = @job.errors.full_messages
+      flash[:danger] = @job.errors.full_messages
       render action: :new
     end
   end

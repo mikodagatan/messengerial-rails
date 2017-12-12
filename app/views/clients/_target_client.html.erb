@@ -1,0 +1,9 @@
+<%= link_to client_target_client_url(@client, target_client), class: 'target-client-link' do %>
+  <div class="col-12 text-left">
+    <div class="v-padding medium target-client-container">
+      <span class='small-index'>Target Client <%= @target_clients.index(target_client) + 1 %></span>
+      <p class=''><%= target_client.name %></p>
+      <p class='small-font tab1'><%= target_client.addresses.first.complete %></p>
+    </div>
+  </div>
+<% end %>

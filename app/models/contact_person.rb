@@ -1,3 +1,3 @@
 class ContactPerson < ApplicationRecord
-  belongs_to :client
+  belongs_to :target_client
 end

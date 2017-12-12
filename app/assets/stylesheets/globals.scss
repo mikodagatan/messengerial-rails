@@ -95,11 +95,12 @@ body {
   align-items: center;
   background-color: $MINT_GREEN;
   height: 25px;
-  width: 100px;
+  width: 150px;
   border-radius: 20px;
   font-size: 11px;
   color: white;
   letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
 }
 
 .medium-index {
@@ -115,6 +116,22 @@ body {
   color: white;
   letter-spacing: 0.15em;
 }
+
+.medium-index-pdf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-size: 11px;
+  color: black;
+  letter-spacing: 0.15em;
+}
+
 
 .space {
   min-height: 1rem;
@@ -164,4 +181,18 @@ a:hover {
 
 .alert {
   margin: .5rem;
+}
+
+.tab1 {
+  display: inline-block;
+  margin-left: 25px;
+}
+
+.tab2 {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+a.target-client-link:hover {
+  color: $MINT_GREEN !important;
 }

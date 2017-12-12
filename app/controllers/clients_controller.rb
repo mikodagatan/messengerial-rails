@@ -17,8 +17,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    @addresses = @client.addresses.order(created_at: :asc)
-    @contact_persons = @client.contact_persons
+    @target_clients = @client.target_clients
   end
 
   private
@@ -26,15 +25,7 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(
       :id,
-      :name,
-      addresses_attributes: [
-        :first_line,
-        :second_line,
-        :city_town,
-        :province,
-        :country,
-        :zipcode
-      ]
+      :name
     )
   end
 

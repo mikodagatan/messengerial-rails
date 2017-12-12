@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' if user_signed_in? %>
+    <%= render 'layouts/navbar' if user_signed_in? && !in_print? %>
     <%= render 'layouts/flash' %>
     <%= render 'layouts/form_layout' if in_form? %>
     <%= render 'layouts/show_layout' if in_show? %>

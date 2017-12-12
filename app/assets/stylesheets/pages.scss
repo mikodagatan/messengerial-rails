@@ -17,7 +17,7 @@
   align-items: center;
   cursor: pointer;
   height: 40px;
-  width: 150px;
+  width: 200px;
   border-radius: 20px;
   font-size: 11px;
   color: white;
@@ -43,9 +43,25 @@
   padding: 1.5rem 1rem 1.5rem 1rem;
 }
 
+.job-container-pdf {
+  border-radius: 20px;
+  font-size: 10px;
+  // border: 0.5px solid grey;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  &p {
+    font-family: 'Proxima Nova Light';
+    font-size: 10px;
+    line-height: 1.1px;
+  }
+}
+
 .job-container:hover {
   background-color: $MINT_GREEN;
   color: white;
+  cursor: pointer;
 }
 
 .job-second-option {
@@ -62,4 +78,8 @@
 
 .btn.btn-primary.btn-sm {
   color: white;
+}
+
+span.thick {
+  font-family: 'Proxima Nova Bold';
 }

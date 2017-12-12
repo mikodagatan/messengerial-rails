@@ -9,12 +9,13 @@
   background-color: $LAVENDER;
   cursor: pointer;
   height: 40px;
-  width: 110px;
+  width: auto;
   border-radius: 20px;
   font-size: 11px;
   color: black;
   letter-spacing: 0.15em;
   margin-left: 0.5rem;
+  padding: 0rem 2rem 0rem 2rem;
 }
 
 .navbar-button:hover {

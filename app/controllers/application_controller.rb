@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   require 'pdfkit'
 
-  helper_method :in_form?, :in_show?, :in_report?
+  helper_method :in_form?, :in_show?, :in_report?, :in_print?
 
   def in_form?
     controller_name == 'registrations' ||

@@ -7,7 +7,7 @@ class CreateAddresses < ActiveRecord::Migration[5.1]
       t.string :province
       t.string :country
       t.string :zipcode
-      t.integer :client_id
+      t.integer :target_client_id
 
       t.timestamps
     end

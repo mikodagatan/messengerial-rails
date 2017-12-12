@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   root to: 'pages#landing_page'
 
   resources :clients do
-    resources :contact_persons
-    resources :addresses
+    resources :target_clients do
+      resources :contact_persons
+      resources :addresses
+    end
   end
 
   get 'selections/change_contact_person'

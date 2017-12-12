@@ -9,6 +9,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.integer :contact_person_id
       t.text :notes_to_resource
       t.integer :resource_id
+      t.integer :target_client_id
       t.integer :status_id
       t.integer :request_type_id
       t.text :resource_notes

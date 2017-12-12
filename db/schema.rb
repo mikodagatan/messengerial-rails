@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208104622) do
+ActiveRecord::Schema.define(version: 20171212104631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171208104622) do
     t.string "province"
     t.string "country"
     t.string "zipcode"
-    t.integer "client_id"
+    t.integer "target_client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 20171208104622) do
     t.string "first_name"
     t.string "last_name"
     t.string "contact_number"
-    t.integer "client_id"
+    t.integer "target_client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20171208104622) do
     t.integer "contact_person_id"
     t.text "notes_to_resource"
     t.integer "resource_id"
+    t.integer "target_client_id"
     t.integer "status_id"
     t.integer "request_type_id"
     t.text "resource_notes"
@@ -62,6 +65,8 @@ ActiveRecord::Schema.define(version: 20171208104622) do
     t.integer "job_id"
     t.string "notification_type"
     t.datetime "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "request_types", force: :cascade do |t|
@@ -72,6 +77,13 @@ ActiveRecord::Schema.define(version: 20171208104622) do
 
   create_table "statuses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "target_clients", force: :cascade do |t|
+    t.string "name"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

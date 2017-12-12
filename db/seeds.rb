@@ -10,8 +10,17 @@
   client = Client.new(
     name: Faker::Company.unique.name
   )
+
+  client.save
+
+  target_client = client.target_clients.build(
+    name: Faker::Company.unique.name
+  )
+
+  target_client.save!
+
   3.times do
-    client.addresses.build(
+    target_client.addresses.build(
       first_line: Faker::Address.street_address,
       second_line: Faker::Address.community,
       city_town: Faker::Address.city,
@@ -31,7 +40,7 @@
   user.save
 
   2.times do
-    contact_person = client.contact_persons.build(
+    contact_person = target_client.contact_persons.build(
       first_name: Faker::Name.unique.first_name,
       last_name: Faker::Name.unique.last_name,
       contact_number: Faker::PhoneNumber.unique.phone_number
@@ -41,6 +50,7 @@
     Job.new(
       required_date: Faker::Date.forward(200),
       client_id: client.id,
+      target_client_id: target_client.id,
       user_id: user.id,
       address_id: client.addresses.last.id,
       request_description: Faker::TheFreshPrinceOfBelAir.quote,

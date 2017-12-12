@@ -1,0 +1,5 @@
+<span class="thick"><%= current_user.full_name %>:</span> Tasks From <%= better_date(@start_date) %> to <%= better_date(@end_date) %>
+
+<br>
+
+<%= render partial: 'job2', collection: @jobs, as: 'job' %>

@@ -6,7 +6,8 @@ class CreateNotifications < ActiveRecord::Migration[5.1]
       t.integer :job_id
       t.string  :notification_type
       t.datetime :read
-      t.references
+
+      t.timestamps
     end
   end
 end

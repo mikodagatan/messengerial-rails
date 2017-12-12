@@ -16,7 +16,9 @@ class PagesController < ApplicationController
   end
 
   def your_jobs
-    @jobs = Job.where(resource_id: current_user.id).by_required_date
+    @start_date = params[:start_date] || Time.zone.today - 1.year
+    @end_date = params[:end_date] || Time.zone.today + 1.year
+    @jobs = Job.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
     # kit = PDFKit.new(html, :page_size => 'Letter')
     # kit.stylesheets << '/app/stylesheets/application.scss'
   end
@@ -26,9 +28,9 @@ class PagesController < ApplicationController
   end
 
   def print_tasks
-    @start_date = start_date
-    @end_date = end_date
-    @jobs = Job.where(user_id: current_user.id).where("required_date is between ? and ?", @start_date, @end_date).by_required_date
+    @start_date = params[:start_date] || Time.zone.today - 1.year
+    @end_date = params[:end_date] || Time.zone.today + 1.year
+    @jobs = Job.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
   end
 
   def sort_direction
