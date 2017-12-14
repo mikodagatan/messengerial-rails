@@ -37,8 +37,18 @@ module ApplicationHelper
   end
 
   def has_tasks?(job)
-    if job.where.not(status_id: 4).blank?
+    if job.where.not(status_id: 3).blank?
       'No tasks for now'
+    end
+  end
+  def requestor(requestor)
+    if requestor == current_user
+      '(Requestor)'
+    end
+  end
+  def resource(resource)
+    if resource == current_user
+      '(Resource)'
     end
   end
 

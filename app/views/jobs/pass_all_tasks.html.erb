@@ -1,0 +1,5 @@
+<h3>Pass All Tasks</h3>
+<%= simple_form_for :pass_all_tasks, url: pass_all_tasks2_jobs_url do |f| %>
+  <%= f.input :resource_id, collection: @users, label_method: :full_name, value_method: :id %>
+  <%= f.submit 'Pass Task', class: 'btn btn-primary white-text' %>
+<% end %>

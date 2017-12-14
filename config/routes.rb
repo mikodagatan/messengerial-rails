@@ -28,9 +28,14 @@ Rails.application.routes.draw do
   get 'location_report' => 'reports#location_report'
 
   resources :jobs do
+    get 'history' => 'jobs#history'
     get 'resource_notes' => "jobs#resource_notes"
     get 'pass_task' => 'jobs#pass_task'
     post 'pass_task2' => 'jobs#pass_task2'
+    collection do
+      get :pass_all_tasks
+      post :pass_all_tasks2
+    end
   end
 
   get 'notifications/link_through'

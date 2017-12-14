@@ -68,6 +68,17 @@ class JobsController < ApplicationController
     @jobs = Array.wrap(Job.find(params[:job_id]))
   end
 
+  def history
+    @job = Job.find(params[:job_id])
+    @jobs = Array.wrap(@job)
+    @completed = 3
+    @history = Notification.joins(:job)
+      .where(third_id: nil)
+      .where(job: @job)
+      .where.not(jobs: {status_id: @completed})
+      .where.not(notification_type: "notif_welcome")
+      .order(created_at: :desc)
+  end
 
   def index
   end
@@ -93,6 +104,19 @@ class JobsController < ApplicationController
       flash[:danger] = @job.errors.full_message
       redirect_to jobs_pass_task_url(@job)
     end
+  end
+
+  def pass_all_tasks
+    @users = User.all
+  end
+
+  def pass_all_tasks2
+    @users = User.all
+    @resource = User.find(params[:pass_all_tasks][:resource_id])
+    Job.where(resource_id: current_user.id, status: { name: !'Completed'}).update_all(
+      resource_id: @resource.id
+    )
+    notif_pass_all_tasks
   end
 
   private
@@ -173,8 +197,22 @@ class JobsController < ApplicationController
     Notification.create(
       sender_id: current_user.id,
       recipient_id: job.user_id,
+      third_id: job.resource_id,
       job_id: job.id,
       notification_type: 'notif_pass_task_owner'
+    )
+  end
+  def notif_pass_all_tasks
+    Notification.create(
+      sender_id: current_user.id,
+      recipient_id: job.resource_id,
+      notification_type: 'notif_pass_all_tasks'
+    )
+    Notification.create(
+      sender_id: current_user.id,
+      recipient_id: job.user_id,
+      third_id: job.resource_id,
+      notification_type: 'notif_pass_all_tasks_owner'
     )
   end
 end

@@ -14,6 +14,8 @@
               <%= render partial:'notif_welcome', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_welcome'%>
               <%= render partial:'notif_pass_task', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_pass_task'%>
               <%= render partial:'notif_pass_task_owner', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_pass_task_owner'%>
+              <%= render partial:'notif_pass_all_tasks', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_pass_all_tasks'%>
+              <%= render partial:'notif_pass_all_tasks_owner', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_pass_all_tasks_owner'%>
 
             </div>
             <div class="p-2 small-font">
