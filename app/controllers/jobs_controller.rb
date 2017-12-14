@@ -74,7 +74,26 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-end
+  end
+
+  def pass_task
+    @job = Job.find(params[:job_id])
+    @jobs = Array.wrap(@job)
+    @users = User.all
+  end
+
+  def pass_task2
+    @job = Job.find(params[:job_id])
+    @users = User.all
+    if @job.update_attributes(job_params)
+      flash[:success] = "Job passed to " + @job.resource.full_name
+      notif_pass_task(@job)
+      redirect_to your_tasks_url
+    else
+      flash[:danger] = @job.errors.full_message
+      redirect_to jobs_pass_task_url(@job)
+    end
+  end
 
   private
 
@@ -142,6 +161,20 @@ end
       recipient_id: job.user_id,
       job_id: job.id,
       notification_type: 'notif_resource_notes'
+    )
+  end
+  def notif_pass_task(job)
+    Notification.create(
+      sender_id: current_user.id,
+      recipient_id: job.resource_id,
+      job_id: job.id,
+      notification_type: 'notif_pass_task'
+    )
+    Notification.create(
+      sender_id: current_user.id,
+      recipient_id: job.user_id,
+      job_id: job.id,
+      notification_type: 'notif_pass_task_owner'
     )
   end
 end

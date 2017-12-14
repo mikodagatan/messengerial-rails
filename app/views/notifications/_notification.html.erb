@@ -1,5 +1,5 @@
 <% if notification.notification_type != 'notif_welcome' %>
-  <%= link_to update_notification_unread(job: notification.job.id, notification: notification.id) do %>
+  <%= link_to update_notification_unread_url(job: notification.job.id, notification: notification.id) do %>
     <div class="row">
       <div class="col-12">
         <div class="alert alert-primary">
@@ -12,6 +12,9 @@
               <%= render partial:'notif_edit_task', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_edit_task'%>
               <%= render partial:'notif_resource_notes', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_resource_notes'%>
               <%= render partial:'notif_welcome', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_welcome'%>
+              <%= render partial:'notif_pass_task', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_pass_task'%>
+              <%= render partial:'notif_pass_task_owner', collection: Array.wrap(notification), as: 'notification' if notification.notification_type == 'notif_pass_task_owner'%>
+
             </div>
             <div class="p-2 small-font">
               <%= better_datetime(Time.zone.now) %>

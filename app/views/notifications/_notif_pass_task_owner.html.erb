@@ -1,0 +1,8 @@
+
+<p><strong><%= notification.sender.full_name %></strong> has reassigned your task to <strong><%= notification.job.resource.full_name %></strong>
+<hr>
+<p>
+  <strong><%= notification.job.request_type.name %></strong> work for <strong><%= notification.job.client.name %></strong> due <strong><%= better_date2(notification.job.required_date) %></strong>
+</p>
+
+<p><strong>Status: </strong> <%= notification.job.status.name %> </p>

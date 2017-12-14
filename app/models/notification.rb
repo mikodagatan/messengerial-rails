@@ -8,5 +8,5 @@ class Notification < ApplicationRecord
     where(read: nil)
   }
 
-  
+
 end

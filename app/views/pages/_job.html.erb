@@ -70,8 +70,9 @@
         <%# if action_name == 'your_jobs' %>
           <div class="p-2">
             <%= link_to "Edit", edit_job_url(job), class:'btn btn-primary btn-sm white-font' if current_user == job.user %>
+            <%= link_to "Pass Task", job_pass_task_url(job), class:'btn btn-primary btn-sm white-font' if current_user == job.resource %>
             <%= link_to "Add / Edit Resource Notes", job_resource_notes_url(job), class:'btn btn-primary btn-sm white-font' if current_user == job.resource %>
-            <%= render 'change_status', job: job if current_user == job.user %>
+            <%= render 'change_status', job: job if current_user == job.user || current_user = job.resource %>
           </div>
         <%# end %>
         <div class="p-2">
