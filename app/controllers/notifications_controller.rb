@@ -6,10 +6,10 @@ class NotificationsController < ApplicationController
   end
 
   def update_notification_unread
-    @job = params[:job]
+    @task = params[:task]
     @notification = params[:notification]
     Notification.find(@notification).update(read: Time.zone.today)
-    redirect_to your_tasks_url +  "#job_first_#{@job_id}"
+    redirect_to your_tasks_url +  "#task_first_#{@task_id}"
   end
 
   def update_notification_unread_all

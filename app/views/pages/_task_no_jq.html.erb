@@ -1,0 +1,74 @@
+<div class="col-12">
+  <div class="task-container small-font">
+    <div class="col-12 v-padding" id="task_first_<%= @tasks.index(task)%>">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="row">
+            <div class="col">
+              <p><strong>Required Date:</strong> <%= better_date(task.required_date) %></p>
+            </div>
+            <div class="col-6 col-md-3">
+              <p><strong>Request Type: </strong><%= task.request_type.name %></p>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="col-12 col-md-3">
+
+          <p><strong>Requestor:</strong></p>
+          <p><%= task.user.full_name %></p>
+          <p><%= task.user.contact_number %></p>
+        </div>
+        <div class="col-12 col-md-3">
+          <p><strong>Client:</strong> <%= link_to task.client.name, client_url(task.client) %></p>
+          <p><strong>Contact:</strong></p>
+          <p><%= task.contact_person.full_name %></p>
+          <p><%= task.contact_person.contact_number %></p>
+        </div>
+        <div class="col-12 col-md-3">
+          <p><strong>Resource: </strong></p>
+          <p><%= task.resource.full_name %></p>
+          <p><%= task.resource.contact_number %></p>
+        </div>
+        <div class="col-12 col-md-3 text-center">
+          <p><strong>Status:</strong></p>
+          <div class="d-flex flex-row justify-content-center">
+
+            <div class="medium-index bg-<%= status(task.status.name) %>"><%= task.status.name.upcase %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 small-font " id="task_second_<%= @tasks.index(task) %>">
+        <div class="space"></div>
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="task-second-option">
+            <p><strong>Address: </strong><%= task.address.complete %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="task-second-option">
+            <p><strong>Request Description: </strong> <br> <%= task.request_description %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="task-second-option">
+            <p><strong>Notes to Resource: </strong> <br> <%= task.notes_to_resource %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="task-second-option">
+            <p><strong>Resource Notes: </strong> <br> <%= task.resource_notes%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <% if action_name == 'your_tasks' %>
+        <%= link_to "Edit", edit_task_url(task), class:'btn btn-primary btn-sm white-font' if current_user == task.user %>
+        <%= link_to "Add Resource Notes", edit_task_url(task, add_notes_only: true), class:'btn btn-primary btn-sm white-font' if current_user == task.resource %>
+      <% end %>
+    </div>
+  </div>
+</div>

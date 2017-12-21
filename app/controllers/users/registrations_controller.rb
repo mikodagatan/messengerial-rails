@@ -11,14 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "User saved"
+      flash[:success] = "User has been registered. To confirm your account, please go to your email and follow the confirmation instructions"
       redirect_to root_url
       notif_welcome(@user)
     else
-      flash.now[:danger] = "User not saved"
+      flash[:danger] = @user.errors.full_messages
       redirect_to root_url
     end
-
   end
 
   # GET /resource/edit

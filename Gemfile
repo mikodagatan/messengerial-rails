@@ -14,7 +14,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-# gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
@@ -47,8 +46,12 @@ gem 'country_select'
 gem 'select2-rails'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
-gem 'redis', '3.0'
+gem 'redis', '3.0.4'
+gem 'redis-namespace'
 gem "pdfkit"
 gem 'unicorn'
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 gem 'wkhtmltopdf-binary'
+gem 'resque'
+gem 'resque-scheduler'
+gem 'mailcatcher'

@@ -1,0 +1,5 @@
+<h3>Add / Edit Resource Notes</h3>
+<div class="space"></div>
+<%= render 'task_resource_notes_form', url: task_url(@task), method: :patch %>
+<div class="space"></div>
+<%= render partial: 'pages/task_no_jq', collection: @tasks, as: 'task' %>

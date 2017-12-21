@@ -1,0 +1,37 @@
+<div class='pb_avoid'>
+  <span class="thick">Task# <%= task.id %></span>
+  <div class="row">
+    <div class="col-12">
+      <div class="task-container-pdf">
+        <hr class="pdf">
+        <div class="row">
+          <div class="col-6">
+            <p><span class="thick">Required Date:</span> <%= better_date2(task.required_date) %></p>
+            <p><span class="thick">Request Type: </span><%= task.request_type.name %></p>
+            <p><span class="thick">Status: </span><%= task.status.name.upcase %></p>
+            <p><span class="thick">Requestor: </span><%= task.user.full_name %> (<%= task.user.contact_number %>)</p>
+          </div>
+          <div class="col-6">
+            <p><span class="thick">Client:</span> <%= task.client.name %></p>
+            <p><span class="thick">Target Client:</span> <%= task.target_client.name %></p>
+            <p><span class="thick">Contact:</span> <%= task.contact_person.full_name %> (<%= task.contact_person.contact_number %>)</p>
+            <p><span class="thick">Resource: </span><%= task.resource.full_name %> (<%= task.resource.contact_number %>)</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p><span class="thick">Address: </span><%= task.address.complete %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p><span class="thick">Request Description: </span> <br> <%= task.request_description %></p>
+            <p><span class="thick">Notes to Resource: </span> <br> <%= task.notes_to_resource %></p>
+            <p><span class="thick">Resource Notes: </span> <br> <%= task.resource_notes%></p>
+          </div>
+        </div>
+        <hr class="pdf">
+      </div>
+    </div>
+  </div>
+</div>

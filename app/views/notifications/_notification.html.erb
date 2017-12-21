@@ -1,5 +1,5 @@
 <% if notification.notification_type != 'notif_welcome' %>
-  <%= link_to update_notification_unread_url(job: notification.job.id, notification: notification.id) do %>
+  <%= link_to update_notification_unread_url(task: notification.task.id, notification: notification.id) do %>
     <div class="row">
       <div class="col-12">
         <div class="alert alert-primary">

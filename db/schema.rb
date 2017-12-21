@@ -42,27 +42,10 @@ ActiveRecord::Schema.define(version: 20171214101351) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.date "required_date"
-    t.integer "client_id"
-    t.integer "user_id"
-    t.integer "address_id"
-    t.text "request_description"
-    t.integer "contact_person_id"
-    t.text "notes_to_resource"
-    t.integer "resource_id"
-    t.integer "target_client_id"
-    t.integer "status_id"
-    t.integer "request_type_id"
-    t.text "resource_notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "recipient_id"
-    t.integer "job_id"
+    t.integer "task_id"
     t.string "notification_type"
     t.datetime "read"
     t.datetime "created_at", null: false
@@ -85,6 +68,23 @@ ActiveRecord::Schema.define(version: 20171214101351) do
   create_table "target_clients", force: :cascade do |t|
     t.string "name"
     t.integer "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.date "required_date"
+    t.integer "client_id"
+    t.integer "user_id"
+    t.integer "address_id"
+    t.text "request_description"
+    t.integer "contact_person_id"
+    t.text "notes_to_resource"
+    t.integer "resource_id"
+    t.integer "target_client_id"
+    t.integer "status_id"
+    t.integer "request_type_id"
+    t.text "resource_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

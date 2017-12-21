@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations', confirmations: 'confirmations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', confirmations: 'users/confirmations' }
   devise_scope :user do
   	get '/users/sign_out' => 'devise/sessions#destroy'
 	end
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'selections/change_contact_person'
   get 'selections/change_address'
   get 'selections/change_target_client'
-  get 'your_tasks' => 'pages#your_jobs'
+  get 'your_tasks' => 'pages#your_tasks'
   get 'your_requests' => 'pages#your_requests'
   get 'print_tasks' => 'pages#print_tasks'
   get 'update_notification_unread' => 'notifications#update_notification_unread'
@@ -27,11 +27,11 @@ Rails.application.routes.draw do
 
   get 'location_report' => 'reports#location_report'
 
-  resources :jobs do
-    get 'history' => 'jobs#history'
-    get 'resource_notes' => "jobs#resource_notes"
-    get 'pass_task' => 'jobs#pass_task'
-    post 'pass_task2' => 'jobs#pass_task2'
+  resources :tasks do
+    get 'history' => 'tasks#history'
+    get 'resource_notes' => "tasks#resource_notes"
+    get 'pass_task' => 'tasks#pass_task'
+    post 'pass_task2' => 'tasks#pass_task2'
     collection do
       get :pass_all_tasks
       post :pass_all_tasks2
@@ -43,6 +43,10 @@ Rails.application.routes.draw do
 
   # selections
   mount ActionCable.server => '/cable'
+
+
+  require 'resque/server'
+  mount Resque::Server, at: '/resque'
 
 
 end

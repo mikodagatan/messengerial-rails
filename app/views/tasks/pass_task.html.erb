@@ -1,7 +1,7 @@
 <h3>Pass Task</h3>
-<%= simple_form_for @job, url: job_pass_task2_url(@job), method: :post do |f| %>
+<%= simple_form_for @task, url: task_pass_task2_url(@task), method: :post do |f| %>
   <%= f.input :resource_id, collection: @users, label_method: :full_name, value_method: :id %>
   <%= f.submit 'Pass Task', class: 'btn btn-primary white-text' %>
 <% end %>
 <br>
-<%= render partial: 'pages/job_no_jq', collection: @jobs, as: 'job' %>
+<%= render partial: 'pages/task_no_jq', collection: @tasks, as: 'task' %>

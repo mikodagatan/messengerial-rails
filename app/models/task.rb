@@ -1,5 +1,5 @@
-class Job < ApplicationRecord
-  after_create_commit { NotificationBroadcastJob.perform_later self }
+class Task < ApplicationRecord
+  # after_create_commit { Resque.enqueue(NotificationBroadcastJob, self.id) }
 
   belongs_to :client
   belongs_to :user, required: false

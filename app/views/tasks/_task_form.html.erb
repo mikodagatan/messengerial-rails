@@ -1,4 +1,4 @@
-<%= simple_form_for @job, url: url, method: method do |f| %>
+<%= simple_form_for @task, url: url, method: method do |f| %>
   <%= f.input :required_date %>
   <%= f.input :client_id, collection: @clients, label_method: :name, value_method: :id %>
   <%= f.input :target_client_id, collection: @target_clients, label_method: :name, value_method: :id %>

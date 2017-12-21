@@ -2,5 +2,5 @@
 <p><strong><%= notification.sender.full_name %></strong> added / edited notes for your task request. You may want to check it out to see what you're missing out on.
 <hr>
 <p>
-  <strong><%= notification.job.request_type.name %></strong> work for <strong><%= notification.job.client.name %></strong> due <strong><%= better_date2(notification.job.required_date) %></strong>
+  <strong><%= notification.task.request_type.name %></strong> work for <strong><%= notification.task.client.name %></strong> due <strong><%= better_date2(notification.task.required_date) %></strong>
 </p>

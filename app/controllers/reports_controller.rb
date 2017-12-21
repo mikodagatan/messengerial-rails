@@ -11,22 +11,22 @@ class ReportsController < ApplicationController
   end
 
   def by_city_town(city_town)
-    Job.joins(:address).where(addresses: {city_town: city_town}).count
+    Task.joins(:address).where(addresses: {city_town: city_town}).count
   end
 
   def by_city_town_complete(city_town)
-    Job.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'Complete'}).count
+    Task.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'Complete'}).count
   end
 
   def by_city_town_scheduled(city_town)
-    Job.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'Scheduled'}).count
+    Task.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'Scheduled'}).count
   end
 
   def by_city_town_with_issues(city_town)
-    Job.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'With Issues'}).count
+    Task.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'With Issues'}).count
   end
 
   def by_city_town_open(city_town)
-    Job.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'Open'}).count
+    Task.joins(:address, :status).where(addresses: {city_town: city_town}, statuses: {name: 'Open'}).count
   end
 end

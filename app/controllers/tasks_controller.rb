@@ -1,8 +1,7 @@
-class JobsController < ApplicationController
-
+class TasksController < ApplicationController
 
   def new
-    @job = Job.new
+    @task = Task.new
     @clients = Client.all
     @contact_persons = Array.wrap(nil)
     @addresses = Array.wrap(nil)
@@ -13,69 +12,69 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
-    @job.status_id = Status.find_by(name: "Open").id
-    @job.user_id = current_user.id
-    if @job.save
-      flash[:success] = "Task created for resource, #{@job.resource.full_name}, and client, #{@job.client.name}, with target client, #{@job.target_client.name}"
+    @task = Task.new(task_params)
+    @task.status_id = Status.find_by(name: "Open").id
+    @task.user_id = current_user.id
+    if @task.save
+      flash[:success] = "Task created for resource, #{@task.resource.full_name}, and client, #{@task.client.name}, with target client, #{@task.target_client.name}"
       redirect_to root_url
-      notif_new_task(@job)
+      notif_new_task(@task)
     else
-      flash[:danger] = @job.errors.full_messages
-      redirect_to new_job_url
+      flash[:danger] = @task.errors.full_messages
+      redirect_to new_task_url
     end
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @task = Task.find(params[:id])
     @clients = Client.all
-    @contact_persons = Array.wrap(@job.client.contact_persons)
-    @addresses = Array.wrap(@job.client.addresses)
+    @contact_persons = Array.wrap(@task.client.contact_persons)
+    @addresses = Array.wrap(@task.client.addresses)
     @resources = User.all
     @statuses = Status.all
     @request_types = RequestType.all
   end
 
   def update
-    @job = Job.find(params[:id])
+    @task = Task.find(params[:id])
     if params[:Scheduled]
-      @job.update(status_id: 2)
+      @task.update(status_id: 2)
       redirect_to root_url
-      notif_change_status_scheduled(@job)
+      notif_change_status_scheduled(@task)
     elsif params[:Completed]
-      @job.update(status_id: 3)
+      @task.update(status_id: 3)
       redirect_to root_url
-      notif_change_status_completed(@job)
+      notif_change_status_completed(@task)
     elsif params[:With_Issues]
-      @job.update(status_id: 4)
+      @task.update(status_id: 4)
       redirect_to root_url
-      notif_change_status_with_issues(@job)
+      notif_change_status_with_issues(@task)
     elsif params[:Resource_Notes]
       redirect_to root_url
-      notif_resource_notes(@job)
-    elsif @job.update_attributes(job_params)
-      flash.now[:success] = "Job Edited"
+      notif_resource_notes(@task)
+    elsif @task.update_attributes(task_params)
+      flash.now[:success] = "task Edited"
       redirect_to root_url
-      notif_edit_task(@job)
+      notif_edit_task(@task)
     else
-      flash.now[:danger] = "Job cannot be edited"
+      flash.now[:danger] = "task cannot be edited"
       render action: :new
     end
   end
 
   def resource_notes
-    @job = Job.find(params[:job_id])
-    @jobs = Array.wrap(Job.find(params[:job_id]))
+    @task = Task.find(params[:task_id])
+    @tasks = Array.wrap(task.find(params[:task_id]))
   end
 
   def history
-    @job = Job.find(params[:job_id])
-    @jobs = Array.wrap(@job)
+    @task = Task.find(params[:task_id])
+    @tasks = Array.wrap(@task)
     @completed = 3
-    @history = Notification.joins(:job)
+    @history = Notification.joins(:task)
       .where(third_id: nil)
-      .where(job: @job)
-      .where.not(jobs: {status_id: @completed})
+      .where(task: @task)
+      .where.not(tasks: {status_id: @completed})
       .where.not(notification_type: "notif_welcome")
       .order(created_at: :desc)
   end
@@ -84,25 +83,25 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def pass_task
-    @job = Job.find(params[:job_id])
-    @jobs = Array.wrap(@job)
+    @task = Task.find(params[:task_id])
+    @tasks = Array.wrap(@task)
     @users = User.all
   end
 
   def pass_task2
-    @job = Job.find(params[:job_id])
+    @task = Task.find(params[:task_id])
     @users = User.all
-    if @job.update_attributes(job_params)
-      flash[:success] = "Job passed to " + @job.resource.full_name
-      notif_pass_task(@job)
+    if @task.update_attributes(task_params)
+      flash[:success] = "task passed to " + @task.resource.full_name
+      notif_pass_task(@task)
       redirect_to your_tasks_url
     else
-      flash[:danger] = @job.errors.full_message
-      redirect_to jobs_pass_task_url(@job)
+      flash[:danger] = @task.errors.full_message
+      redirect_to tasks_pass_task_url(@task)
     end
   end
 
@@ -113,7 +112,7 @@ class JobsController < ApplicationController
   def pass_all_tasks2
     @users = User.all
     @resource = User.find(params[:pass_all_tasks][:resource_id])
-    Job.where(resource_id: current_user.id, status: { name: !'Completed'}).update_all(
+    Task.where(resource_id: current_user.id, status: { name: !'Completed'}).update_all(
       resource_id: @resource.id
     )
     notif_pass_all_tasks
@@ -121,8 +120,8 @@ class JobsController < ApplicationController
 
   private
 
-  def job_params
-    params.require(:job).permit(
+  def task_params
+    params.require(:task).permit(
       :id,
       :required_date,
       :client_id,
@@ -139,79 +138,79 @@ class JobsController < ApplicationController
     )
   end
 
-  def notif_change_status_scheduled(job)
+  def notif_change_status_scheduled(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_change_status_scheduled'
     )
   end
-  def notif_change_status_with_issues(job)
+  def notif_change_status_with_issues(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_change_status_with_issues'
     )
   end
-  def notif_change_status_completed(job)
+  def notif_change_status_completed(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_change_status_completed'
     )
   end
-  def notif_new_task(job)
+  def notif_new_task(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_new_task'
     )
   end
-  def notif_edit_task(job)
+  def notif_edit_task(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_edit_task'
     )
   end
-  def notif_resource_notes(job)
+  def notif_resource_notes(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.user_id,
-      job_id: job.id,
+      recipient_id: task.user_id,
+      task_id: task.id,
       notification_type: 'notif_resource_notes'
     )
   end
-  def notif_pass_task(job)
+  def notif_pass_task(task)
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_pass_task'
     )
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.user_id,
-      third_id: job.resource_id,
-      job_id: job.id,
+      recipient_id: task.user_id,
+      third_id: task.resource_id,
+      task_id: task.id,
       notification_type: 'notif_pass_task_owner'
     )
   end
   def notif_pass_all_tasks
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.resource_id,
+      recipient_id: task.resource_id,
       notification_type: 'notif_pass_all_tasks'
     )
     Notification.create(
       sender_id: current_user.id,
-      recipient_id: job.user_id,
-      third_id: job.resource_id,
+      recipient_id: task.user_id,
+      third_id: task.resource_id,
       notification_type: 'notif_pass_all_tasks_owner'
     )
   end

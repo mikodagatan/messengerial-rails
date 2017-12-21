@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   def unlogged_redirect
     if !current_page?(root_url) && user_signed_in? == false && !(controller_name == 'registrations' ||
-    controller_name == 'sessions')
+    controller_name == 'sessions' || controller_name == 'passwords' || controller_name == 'omni_auth_callbacks' || controller_name == 'confirmations')
       redirect_to root_url
     end
   end

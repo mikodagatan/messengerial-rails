@@ -1,3 +1,16 @@
-<% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "alert alert-#{key}", role: "alert" %>
+<% flash.each do |type, msg| %>
+  <% if type == "notice" %>
+    <div class="alert alert-success">
+  <% elsif type == "alert" %>
+    <div class="alert alert-danger">
+  <% else %>
+    <div class='alert alert-<%= "#{type}" %>'>
+  <% end %>
+  <a href="#" class="close" data-dismiss="alert">&#215;</a>
+  <ul style="margin-bottom: 0.25rem; list-style:none;" >
+    <li>
+      <%= msg %>
+    </li>
+  </ul>
+</div>
 <% end %>

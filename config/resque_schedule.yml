@@ -1,0 +1,6 @@
+task_emails_job:
+  cron: '0 9 * * 1-5 *'
+  class: TaskEmailsJob
+  queue: :tasks_email
+  args:
+  description: Runs the perform method in TaskEmailsJob every 9am

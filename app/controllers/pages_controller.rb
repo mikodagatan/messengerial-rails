@@ -9,28 +9,28 @@ class PagesController < ApplicationController
 
     @sort_values = sort_values
 
-    @jobs = Job.where("jobs.status_id = ?", status_id(status)).order("#{sort2}")
-    @jobs = Job.all.order("#{sort2}") if status.nil? || status == "All"
-    @jobs = @jobs.by_required_date if sort2.nil?
-    @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(5)
+    @tasks = Task.where("tasks.status_id = ?", status_id(status)).order("#{sort2}")
+    @tasks = Task.all.order("#{sort2}") if status.nil? || status == "All"
+    @tasks = @tasks.by_required_date if sort2.nil?
+    @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(5)
   end
 
-  def your_jobs
+  def your_tasks
     @start_date = params[:start_date] || Time.zone.today - 1.year
     @end_date = params[:end_date] || Time.zone.today + 1.year
-    @jobs = Job.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
+    @tasks = Task.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
     # kit = PDFKit.new(html, :page_size => 'Letter')
     # kit.stylesheets << '/app/stylesheets/application.scss'
   end
 
   def your_requests
-    @jobs = Job.where(user_id: current_user.id).by_required_date
+    @tasks = Task.where(user_id: current_user.id).by_required_date
   end
 
   def print_tasks
     @start_date = params[:start_date] || Time.zone.today - 1.year
     @end_date = params[:end_date] || Time.zone.today + 1.year
-    @jobs = Job.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
+    @tasks = Task.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
   end
 
   def sort_direction

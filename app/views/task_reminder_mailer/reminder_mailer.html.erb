@@ -1,0 +1,22 @@
+<div style='padding: 10px;'>
+  <div style='font-family: "Arial"; background-color: #f7f7f9; padding: 1rem; border-radius: 10px;'>
+    <h3>Hi <%= @user.full_name %>!</h3>
+    <p>
+      We would like to remind you that you have pending tasks.
+    </p>
+    <p>Tasks for this week: <%= @tasks.where("tasks.required_date between ? and ?", Time.zone.today.at_beginning_of_week, Time.zone.today.at_end_of_week).count %>
+    </p>
+    <p>
+      Tasks for today: <%= @tasks.where(required_date: Time.zone.today).count %>
+    </p>
+
+    <a href='<%= your_tasks_url %>'>
+      Click here to view your Tasks.
+    </a>
+
+    <br />
+    <br />
+    <p>Thank you,</p>
+    <p>Offshore Tracker Team</p>
+  </div>
+</div>

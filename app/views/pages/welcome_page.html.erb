@@ -1,10 +1,10 @@
 <div class="options-container h-padding">
   <div class="row align-items-center">
-    <%= link_to 'ADD TASK', new_job_url, class: 'option-button black-text bg-white' %>
+    <%= link_to 'ADD TASK', new_task_url, class: 'option-button black-text bg-white' %>
     <%= link_to 'ADD CLIENT', new_client_url, class: 'option-button black-text bg-white' %>
   </div>
 </div>
 <div class="row">
   <%= render 'client_pane' %>
-  <%= render 'job_pane' %>
+  <%= render 'task_pane' %>
 </div>

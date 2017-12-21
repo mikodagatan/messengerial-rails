@@ -1,0 +1,85 @@
+<div class="col-12">
+  <div class="task-container small-font">
+    <div class="col-12 v-padding task-first" id="task_first_<%= task.id%>">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="row">
+            <div class="col">
+              <p><strong>Required Date:</strong> <%= better_date2(task.required_date) %></p>
+            </div>
+            <div class="col-6 col-md-3">
+              <p><strong>Request Type: </strong><%= task.request_type.name %></p>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="col-12 col-md-3">
+
+          <p><strong>Requestor:</strong> <%= task.user.full_name %></p>
+          <p><strong>Number: </strong> <%= task.user.contact_number %></p>
+          <p><strong>Client:</strong> <%= link_to task.client.name, client_url(task.client) %></p>
+
+        </div>
+        <div class="col-12 col-md-3">
+          <p><strong>Target Client: </strong> <%= link_to task.target_client.name, client_target_client_url(task.client, task.target_client) %> </p>
+          <p><strong>Contact:</strong> <%= task.contact_person.full_name %></p>
+          <p><strong>Number: </strong> <%= task.contact_person.contact_number %></p>
+        </div>
+        <div class="col-12 col-md-3">
+          <p><strong>Resource: </strong></p>
+          <p><%= task.resource.full_name %></p>
+          <p><%= task.resource.contact_number %></p>
+        </div>
+        <div class="col-12 col-md-3 text-center">
+          <p><strong>Status:</strong></p>
+          <div class="d-flex flex-row justify-content-center">
+
+            <div class="medium-index bg-<%= status(task.status.name) %>"><%= task.status.name.upcase %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 small-font task-second d-none" id="task_second_<%= task.id %>">
+        <div class="space"></div>
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="task-second-option">
+            <p><strong>Address: </strong><%= task.address.complete %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="task-second-option">
+            <p><strong>Request Description: </strong> <br> <%= task.request_description %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="task-second-option">
+            <p><strong>Notes to Resource: </strong> <br> <%= task.notes_to_resource %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="task-second-option">
+            <p><strong>Resource Notes: </strong> <br> <%= task.resource_notes%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <hr>
+      <div class="d-flex justify-content-between">
+        <%# if action_name == 'your_tasks' %>
+          <div class="p-2">
+            <%= link_to "Edit", edit_task_url(task), class:'btn btn-primary btn-sm white-font' if current_user == task.user %>
+            <%= link_to "Pass Task", task_pass_task_url(task), class:'btn btn-primary btn-sm white-font' if current_user == task.resource %>
+            <%= link_to "Add / Edit Resource Notes", task_resource_notes_url(task), class:'btn btn-primary btn-sm white-font' if current_user == task.resource %>
+            <%= render 'change_status', task: task if current_user == task.user || current_user = task.resource %>
+            <%= link_to "History", task_history_url(task), class:'btn btn-sm btn-warning' %>
+          </div>
+        <%# end %>
+        <div class="p-2">
+          <p><strong>Date Requested: </strong><%= better_date2(task.created_at) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

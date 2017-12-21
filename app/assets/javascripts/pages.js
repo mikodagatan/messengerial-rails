@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  $('.job-second').hide().removeClass('d-none');
+  $('.task-second').hide().removeClass('d-none');
 
-  $('.job-first').click(function() {
-    $(this).next('.job-second').slideToggle();
+  $('.task-first').click(function() {
+    $(this).next('.task-second').slideToggle();
   });
 
 });

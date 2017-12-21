@@ -47,7 +47,7 @@
     )
     contact_person.save!
 
-    Job.new(
+    Task.new(
       required_date: Faker::Date.forward(200),
       client_id: client.id,
       target_client_id: target_client.id,

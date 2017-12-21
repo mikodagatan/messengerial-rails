@@ -19,13 +19,13 @@
 
         <%= render 'nav_tabs' %>
 
-    <%= render partial: 'job', collection: @jobs, as: 'job' %>
+    <%= render partial: 'task', collection: @tasks, as: 'task' %>
   </div>
   <hr>
   <div class="d-flex justify-content-center">
     <div class="p-2 text-center">
-      <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
-      <%= page_entries_info @jobs %>
+      <%= paginate @tasks, theme: 'twitter-bootstrap-4' %>
+      <%= page_entries_info @tasks %>
     </div>
   </div>
 </div>

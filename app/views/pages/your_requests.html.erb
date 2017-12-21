@@ -2,9 +2,9 @@
   <div class="row h-padding v-padding large">
     <div class="col-12">
       <h3>My Requests</h3>
-      <p><%= has_tasks?(@jobs) %></p>
+      <p><%= has_tasks?(@tasks) %></p>
 
     </div>
   </div>
-  <%= render partial: 'job', collection: @jobs, as: 'job' %>
+  <%= render partial: 'task', collection: @tasks, as: 'task' %>
 </div>

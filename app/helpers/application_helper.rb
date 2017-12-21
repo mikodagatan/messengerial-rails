@@ -36,8 +36,8 @@ module ApplicationHelper
     number_with_precision(number, :precision => 2, :delimiter => ',')
   end
 
-  def has_tasks?(job)
-    if job.where.not(status_id: 3).blank?
+  def has_tasks?(task)
+    if task.where.not(status_id: 3).blank?
       'No tasks for now'
     end
   end
