@@ -22,6 +22,6 @@ production:
   encoding: unicode
   pool: 5
   database: APP_PRODUCTION
-  username: rails
+  username: deploy
   url: localhost
   password: <%= ENV['DATABASE_PASSWORD'] %>
