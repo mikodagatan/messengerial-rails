@@ -16,3 +16,12 @@ development:
 test:
   <<: *default
   database: OCCI_Tracker_db_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: APP_PRODUCTION
+  username: rails
+  url: localhost
+  password: <%= ENV['DATABASE_PASSWORD'] %>

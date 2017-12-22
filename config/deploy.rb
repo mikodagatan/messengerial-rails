@@ -5,10 +5,10 @@ set :application, "offshore-tracker"
 set :repo_url, "git@bitbucket.org:kimonoso/messengerial3.git"
 
 # Default branch is :master
-ask :branch, 'master'
+# ask :branch, 'master'/
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/offshore-tracker"
+set :deploy_to, "/home/deploy/offshore-tracker"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -36,3 +36,24 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # set :keep_releases, 5
 
 set :use_sudo, true
+
+# append :linked_files, "config/database.yml", "config/secrets.yml"
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+
+namespace :rails do
+  desc 'Open a rails console `cap [staging] rails:console [server_index default: 0]`'
+  task :console do
+    server = roles(:app)[ARGV[2].to_i]
+
+    puts "Opening a console on: #{server.hostname}...."
+
+    cmd = "ssh #{server.user}@#{server.hostname} -t 'cd #{fetch(:deploy_to)}/current && RAILS_ENV=#{fetch(:rails_env)} bundle exec rails console'"
+
+    puts cmd
+
+    exec cmd
+  end
+
+
+  set :rbenv_ruby, '2.4.0'
+end

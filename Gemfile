@@ -20,6 +20,7 @@ gem 'capistrano-rbenv',     require: false
 gem 'capistrano-rails',   require: false
 gem 'capistrano-bundler', require: false
 gem 'capistrano-passenger',   require: false
+gem 'capistrano-rails-console'
 
 group :production do
   gem 'rails_12factor'
