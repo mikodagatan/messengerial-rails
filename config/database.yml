@@ -23,5 +23,5 @@ production:
   pool: 5
   database: APP_PRODUCTION
   username: deploy
-  url: localhost
+  url: deploy
   password: <%= ENV['DATABASE_PASSWORD'] %>
