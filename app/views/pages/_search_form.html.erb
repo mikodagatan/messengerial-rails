@@ -1,0 +1,3 @@
+<%= search_form_for @q_tasks, url: your_tasks_url, as: :q_tasks, id: "employments_search" do |f| %>
+  <%= f.search_field :task_cont, type: 'text', placeholder: 'Search task', class: 'form-control ds-input' %>
+<% end %>

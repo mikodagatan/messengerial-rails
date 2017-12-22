@@ -9,16 +9,19 @@ class PagesController < ApplicationController
 
     @sort_values = sort_values
 
-    @tasks = Task.where("tasks.status_id = ?", status_id(status)).order("#{sort2}")
-    @tasks = Task.all.order("#{sort2}") if status.nil? || status == "All"
-    @tasks = @tasks.by_required_date if sort2.nil?
-    @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(5)
+    @q_tasks = Task.where("tasks.status_id = ?", status_id(status)).order("#{sort2}")
+    @q_tasks = Task.all.order("#{sort2}") if status.nil? || status == "All"
+    @q_tasks = @q_tasks.by_required_date if sort2.nil?
+    @q_tasks = @q_tasks.ransack(params[:q_tasks])
+    @tasks = @q_tasks.result.page(params[:page]).per(5)
   end
 
   def your_tasks
     @start_date = params[:start_date] || Time.zone.today - 1.year
     @end_date = params[:end_date] || Time.zone.today + 1.year
-    @tasks = Task.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
+    @q_tasks = Task.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date.ransack(params[:q_tasks])
+    @tasks = @q_tasks.result.page(params[:page]).per(10)
+    # @tasks = Task.where(resource_id: current_user.id).where("required_date between ? and ?", @start_date, @end_date).by_required_date
     # kit = PDFKit.new(html, :page_size => 'Letter')
     # kit.stylesheets << '/app/stylesheets/application.scss'
   end

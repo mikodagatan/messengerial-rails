@@ -13,10 +13,20 @@
           <%= link_to 'Print PDF', print_tasks_url(start_date: params[:start_date], end_date: params[:end_date], format: :pdf), class: 'btn btn-success text-white' %>
         </div>
       </div>
-
+      <div class="d-flex flex-row-reverse">
+        <div class="p-2">
+          <%= render 'search_form' %>
+        </div>
+      </div>
       <p><%= has_tasks?(@tasks) %></p>
-
     </div>
   </div>
   <%= render partial: 'task', collection: @tasks, as: 'task' %>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 text-center">
+      <%= paginate @tasks, theme: 'twitter-bootstrap-4' %>
+      <%= page_entries_info @tasks %>
+    </div>
+  </div>
 </div>

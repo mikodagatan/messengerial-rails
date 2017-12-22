@@ -8,6 +8,15 @@ class User < ApplicationRecord
   has_many :clients, through: :tasks
   has_many :target_clients, through: :clients
 
+  ransacker :full_name do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||',
+        parent.table[:first_name], Arel::Nodes.build_quoted(' ')
+      ),
+      parent.table[:last_name]
+    )
+  end
+
     # new function to set the password without knowing the current
   # password used in our confirmation controller.
   def attempt_set_password(params)

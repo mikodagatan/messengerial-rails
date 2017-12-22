@@ -15,4 +15,7 @@ class Task < ApplicationRecord
     order("required_date DESC")
   }
 
+  ransack_alias :task, :client_name_or_target_client_name_or_status_name_or_user_full_name_or_contact_person_full_name
+
+
 end
