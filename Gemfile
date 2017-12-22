@@ -15,7 +15,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'capistrano-rails', group: :development
+gem 'capistrano',         require: false
+gem 'capistrano-rbenv',     require: false
+gem 'capistrano-rails',   require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano-passenger',   require: false
 
 group :production do
   gem 'rails_12factor'
@@ -56,3 +60,5 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'mailcatcher'
 gem 'ransack'
+gem "therubyracer"
+gem "execjs"
