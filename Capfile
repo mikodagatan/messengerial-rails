@@ -1,6 +1,6 @@
 # Load DSL and set up stages
 require "capistrano/setup"
-require 'capistrano/rake'
+
 
 # Include default deployment tasks
 require "capistrano/deploy"
@@ -50,3 +50,4 @@ set :rbenv_ruby, '2.4.0'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
+require 'capistrano/rake'
