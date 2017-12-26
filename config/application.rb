@@ -17,5 +17,10 @@ module Messengerial3
     config.active_job.queue_adapter = :resque
     config.time_zone = 'Singapore'
     config.active_record.default_timezone = :local
+    # config.after_initialize do
+    #   Rails.application.load_tasks # <---
+    #   Rake::Task['download_csv:get_files'].invoke
+    #   Rake::Task['download_csv:place_in_database'].invoke
+    # end
   end
 end

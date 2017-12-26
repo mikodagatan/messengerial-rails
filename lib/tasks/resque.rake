@@ -6,6 +6,7 @@ namespace :resque do
     require 'resque'
     ENV['QUEUE'] = '*'
     Rake::Task["resque:work"].invoke
+    Rake::Task["resque:scheduler"].invoker
     Resque.redis = 'localhost:6379' unless Rails.env == 'production'
   end
 
