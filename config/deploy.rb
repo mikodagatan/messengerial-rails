@@ -54,6 +54,7 @@ namespace :rails do
     exec cmd
   end
 
-
   set :rbenv_ruby, '2.4.0'
+  set :rbenv_ruby_version, '2.4.0'
+
 end

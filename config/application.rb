@@ -15,5 +15,7 @@ module Messengerial3
     config.middleware.use PDFKit::Middleware, :print_media_type => true
     config.wkhtmltopdf = `which wkhtmltopdf`.gsub(/\n/, '')
     config.active_job.queue_adapter = :resque
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Singapore'
   end
 end
