@@ -17,9 +17,9 @@ module Messengerial3
     config.active_job.queue_adapter = :resque
     config.time_zone = 'Singapore'
     config.active_record.default_timezone = :local
-    config.after_initialize do
-      Rails.application.load_tasks # <---
-      Rake::Task['resque:work'].invoke
-    end
+    # config.after_initialize do
+    #   Rails.application.load_tasks # <---
+    #   Rake::Task['resque:work'].invoke
+    # end
   end
 end

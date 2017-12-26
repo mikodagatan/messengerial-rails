@@ -22,6 +22,7 @@ gem 'capistrano-rails',   require: false
 gem 'capistrano-bundler', require: false
 gem 'capistrano-passenger',   require: false
 gem 'capistrano-rails-console'
+gem 'capistrano-rake', require: false
 
 group :production do
   gem 'rails_12factor'
