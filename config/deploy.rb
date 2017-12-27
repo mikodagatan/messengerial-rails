@@ -57,4 +57,10 @@ namespace :rails do
   set :rbenv_ruby, '2.4.0'
   set :rbenv_ruby_version, '2.4.0'
 
+  role :resque_worker, "128.199.157.80"
+  role :resque_scheduler, "128.199.157.80"
+
+  set :workers, { "tasks_email" => 2 }
+  set :resque_environment_task, true
+  after "deploy:restart", "resque:restart"
 end

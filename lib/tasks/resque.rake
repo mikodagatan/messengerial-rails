@@ -1,5 +1,6 @@
 require 'resque/tasks'
 require 'resque/scheduler/tasks'
+require 'resque/pool/tasks'
 
 namespace :resque do
   task :setup => :environment do
@@ -23,3 +24,9 @@ Resque.after_fork = Proc.new { ActiveRecord::Base.establish_connection } #this i
 
 desc "Alias for resque:work (To run workers on Heroku)"
 task "jobs:work" => "resque:work"
+
+task "resque:pool:setup" do
+  Resque::Pool.after_prefork do |job|
+    Resque.redis.client.reconnect
+  end
+end

@@ -22,6 +22,7 @@ gem 'capistrano-rails',   require: false
 gem 'capistrano-bundler', require: false
 gem 'capistrano-passenger',   require: false
 gem 'capistrano-rails-console'
+gem "capistrano-resque", "~> 0.2.2", require: false
 
 
 group :production do
@@ -62,6 +63,7 @@ gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 gem 'wkhtmltopdf-binary'
 gem 'resque'
 gem 'resque-scheduler'
+gem 'resque-pool'
 gem 'mailcatcher'
 gem 'ransack'
 gem "therubyracer"
