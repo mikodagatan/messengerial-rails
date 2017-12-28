@@ -1,5 +1,6 @@
 task_emails_job:
-  cron: '0 9 * * 1-5 *'
+  # cron: '0 9 * * 1-5 *'
+  cron: '* * * * * *'
   class: TaskEmailsJob
   queue: :tasks_email
   args:
