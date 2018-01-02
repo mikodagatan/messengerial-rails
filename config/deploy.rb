@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.9.1"
+lock "3.10.1"
 
 set :application, "offshore-tracker"
 set :repo_url, "git@bitbucket.org:kimonoso/messengerial3.git"
@@ -57,8 +57,8 @@ namespace :rails do
   set :rbenv_ruby, '2.4.0'
   set :rbenv_ruby_version, '2.4.0'
 
-  role :resque_worker, "128.199.157.80"
-  role :resque_scheduler, "128.199.157.80"
+  role :resque_worker, "trackqer.com"
+  role :resque_scheduler, "trackqer.com"
 
   set :workers, { "tasks_email" => 2 }
   set :resque_environment_task, true
