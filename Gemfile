@@ -64,7 +64,6 @@ gem 'wkhtmltopdf-binary'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'resque-pool'
-gem 'mailcatcher'
 gem 'ransack'
 gem "therubyracer"
 gem "execjs"
