@@ -9,6 +9,33 @@ namespace :resque do
     Rake::Task["resque:work"].invoke
     Rake::Task["resque:scheduler"].invoke
     Resque.redis = 'localhost:6379' # unless Rails.env == 'production'
+
+    desc "Restart running workers"
+    task :restart_workers => :environment do
+      Rake::Task['resque:stop_workers'].invoke
+      Rake::Task['resque:start_workers'].invoke
+    end
+
+    desc "Quit running workers"
+    task :stop_workers => :environment do
+      pids = Array.new
+      Resque.workers.each do |worker|
+        pids.concat(worker.worker_pids)
+      end
+      if pids.empty?
+        puts "No workers to kill"
+      else
+        syscmd = "kill -s QUIT #{pids.join(' ')}"
+        puts "Running syscmd: #{syscmd}"
+        system(syscmd)
+      end
+    end
+
+    desc "Start workers"
+    task :start_workers => :environment do
+      run_worker("*", 2)
+      run_worker("high", 1)
+    end
   end
 
   task :setup_schedule => :setup do
