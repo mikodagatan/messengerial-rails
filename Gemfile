@@ -67,3 +67,4 @@ gem 'resque-pool'
 gem 'ransack'
 gem "therubyracer"
 gem "execjs"
+gem 'foreman'

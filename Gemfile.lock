@@ -118,6 +118,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    dotenv (0.7.0)
     erubi (1.7.0)
     et-orbi (1.0.8)
       tzinfo
@@ -125,6 +126,9 @@ GEM
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.18)
+    foreman (0.64.0)
+      dotenv (~> 0.7.0)
+      thor (>= 0.13.6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.1)
@@ -365,6 +369,7 @@ DEPENDENCIES
   devise
   execjs
   faker
+  foreman
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

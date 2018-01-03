@@ -63,4 +63,26 @@ namespace :rails do
   set :workers, { "tasks_email" => 2 }
   set :resque_environment_task, true
   after "deploy:restart", "resque:restart"
+
+  task :export do
+
+    on roles(:app) do
+      execute [
+        "cd #{release_path} &&",
+        'export rvmsudo_secure_path=0 && ',
+        "#{fetch(:rvm_path)}/bin/rvm #{fetch(:rvm_ruby_version)} do",
+        'rvmsudo',
+        'RAILS_ENV=production bundle exec foreman export --app appname --user username -l logfile-path -f ./Procfile upstart /etc/init -c worker=1,scheduler=1,faye=1'
+      ].join(' ')
+    end
+  end
+
+
+  task :restart do
+    on roles(:app) do
+      execute :sudo, "restart appname"
+    end
+  end
+  after :publishing, :export
+  after :publishing, :restart
 end
