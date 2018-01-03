@@ -83,6 +83,6 @@ namespace :rails do
       execute :sudo, "restart appname"
     end
   end
-  after :publishing, :export
-  after :publishing, :restart
+  # after :publishing, :export
+  # after :publishing, :restart
 end
