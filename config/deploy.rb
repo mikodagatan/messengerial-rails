@@ -59,8 +59,8 @@ namespace :rails do
 
   role :resque_worker, "128.199.157.80"
   role :resque_scheduler, "128.199.157.80"
-
-  set :workers, { "tasks_email" => 2 }
+  
+  set :workers, { "tasks_email" => 1 }
   set :resque_environment_task, true
   after "deploy:restart", "resque:restart"
 
