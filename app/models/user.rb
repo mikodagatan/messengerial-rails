@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :clients, through: :tasks
   has_many :target_clients, through: :clients
 
+  validates :first_name, :last_name, :contact_number, presence: true
+
   ransacker :full_name do |parent|
     Arel::Nodes::InfixOperation.new('||',
       Arel::Nodes::InfixOperation.new('||',

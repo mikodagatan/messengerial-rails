@@ -17,5 +17,6 @@ class Task < ApplicationRecord
 
   ransack_alias :task, :client_name_or_target_client_name_or_status_name_or_user_full_name_or_contact_person_full_name
 
+  validates :required_date, :client_id, :user_id, :address_id, :request_description, :contact_person_id, :resource_id, :target_client_id, :status_id, :request_type_id, presence: true
 
 end

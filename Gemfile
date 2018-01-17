@@ -23,6 +23,7 @@ gem 'capistrano-bundler', require: false
 gem 'capistrano-passenger',   require: false
 gem 'capistrano-rails-console'
 gem "capistrano-resque", "~> 0.2.2", require: false
+gem 'capistrano-faster-assets', '~> 1.0'
 
 
 group :production do
